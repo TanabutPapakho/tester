@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.4 on win32)" generated="20240125 11:05:03.237" rpa="false" schemaversion="4">
+<suite id="s1" name="Swaglabs" source="C:\Users\Ngern\OneDrive\Documents\GitHub\tester\swaglabs.robot">
+<test id="s1-t1" name="SWAG-001 User be able to login with valid username and password" line="22">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240125 11:05:03.442" level="INFO">Opening browser 'chrome' to base url 'https://www.saucedemo.com'.</msg>
+<status status="PASS" starttime="20240125 11:05:03.442" endtime="20240125 11:05:04.998"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=user-name</arg>
+<arg>standard_user</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:04.999" level="INFO">Typing text 'standard_user' into text field 'id=user-name'.</msg>
+<status status="PASS" starttime="20240125 11:05:04.998" endtime="20240125 11:05:05.073"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=password</arg>
+<arg>secret_sauce</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:05.073" level="INFO">Typing text 'secret_sauce' into text field 'id=password'.</msg>
+<status status="PASS" starttime="20240125 11:05:05.073" endtime="20240125 11:05:05.124"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:05.125" level="INFO">Clicking button 'id=login-button'.</msg>
+<status status="PASS" starttime="20240125 11:05:05.124" endtime="20240125 11:05:05.181"/>
+</kw>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>${PRODUCT_PAGE}</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20240125 11:05:05.185" level="INFO">Current location is 'https://www.saucedemo.com/inventory.html'.</msg>
+<status status="PASS" starttime="20240125 11:05:05.182" endtime="20240125 11:05:05.185"/>
+</kw>
+<status status="PASS" starttime="20240125 11:05:03.442" endtime="20240125 11:05:05.185"/>
+</test>
+<test id="s1-t2" name="SWAG-002 User not be able to login with valid username and password" line="29">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240125 11:05:05.187" level="INFO">Opening browser 'chrome' to base url 'https://www.saucedemo.com'.</msg>
+<status status="PASS" starttime="20240125 11:05:05.186" endtime="20240125 11:05:06.712"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=user-name</arg>
+<arg>standard_user</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:06.713" level="INFO">Typing text 'standard_user' into text field 'id=user-name'.</msg>
+<status status="PASS" starttime="20240125 11:05:06.713" endtime="20240125 11:05:06.788"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=password</arg>
+<arg>secret_sauce123</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:06.789" level="INFO">Typing text 'secret_sauce123' into text field 'id=password'.</msg>
+<status status="PASS" starttime="20240125 11:05:06.788" endtime="20240125 11:05:06.841"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:06.841" level="INFO">Clicking button 'id=login-button'.</msg>
+<status status="PASS" starttime="20240125 11:05:06.841" endtime="20240125 11:05:06.885"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>xpath=//div/h3[@data-test="error"]</arg>
+<arg>${ERROR MESSAGE}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20240125 11:05:06.886" level="INFO">Verifying element 'xpath=//div/h3[@data-test="error"]' contains exact text 'Epic sadface: Username and password do not match any user in this service'.</msg>
+<status status="PASS" starttime="20240125 11:05:06.886" endtime="20240125 11:05:06.903"/>
+</kw>
+<status status="PASS" starttime="20240125 11:05:05.186" endtime="20240125 11:05:06.903"/>
+</test>
+<test id="s1-t3" name="SWAG-003 User able to add product to cart" line="36">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240125 11:05:06.904" level="INFO">Opening browser 'chrome' to base url 'https://www.saucedemo.com'.</msg>
+<status status="PASS" starttime="20240125 11:05:06.904" endtime="20240125 11:05:08.438"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=user-name</arg>
+<arg>standard_user</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:08.439" level="INFO">Typing text 'standard_user' into text field 'id=user-name'.</msg>
+<status status="PASS" starttime="20240125 11:05:08.438" endtime="20240125 11:05:08.509"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=password</arg>
+<arg>secret_sauce</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:08.510" level="INFO">Typing text 'secret_sauce' into text field 'id=password'.</msg>
+<status status="PASS" starttime="20240125 11:05:08.509" endtime="20240125 11:05:08.559"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:08.560" level="INFO">Clicking button 'id=login-button'.</msg>
+<status status="PASS" starttime="20240125 11:05:08.559" endtime="20240125 11:05:08.617"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-backpack</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:08.617" level="INFO">Clicking button 'id=add-to-cart-sauce-labs-backpack'.</msg>
+<status status="PASS" starttime="20240125 11:05:08.617" endtime="20240125 11:05:08.653"/>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath=//div/a[@class="shopping_cart_link"]/span</arg>
+<arg>1</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20240125 11:05:08.668" level="INFO">Element 'xpath=//div/a[@class="shopping_cart_link"]/span' contains text '1'.</msg>
+<status status="PASS" starttime="20240125 11:05:08.653" endtime="20240125 11:05:08.668"/>
+</kw>
+<status status="PASS" starttime="20240125 11:05:06.904" endtime="20240125 11:05:08.668"/>
+</test>
+<test id="s1-t4" name="SWAG-004 User able to remove product to cart" line="44">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240125 11:05:08.669" level="INFO">Opening browser 'chrome' to base url 'https://www.saucedemo.com'.</msg>
+<status status="PASS" starttime="20240125 11:05:08.669" endtime="20240125 11:05:10.179"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=user-name</arg>
+<arg>standard_user</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:10.180" level="INFO">Typing text 'standard_user' into text field 'id=user-name'.</msg>
+<status status="PASS" starttime="20240125 11:05:10.180" endtime="20240125 11:05:10.253"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=password</arg>
+<arg>secret_sauce</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:10.254" level="INFO">Typing text 'secret_sauce' into text field 'id=password'.</msg>
+<status status="PASS" starttime="20240125 11:05:10.254" endtime="20240125 11:05:10.306"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:10.307" level="INFO">Clicking button 'id=login-button'.</msg>
+<status status="PASS" starttime="20240125 11:05:10.306" endtime="20240125 11:05:10.368"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-backpack</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:10.368" level="INFO">Clicking button 'id=add-to-cart-sauce-labs-backpack'.</msg>
+<status status="PASS" starttime="20240125 11:05:10.368" endtime="20240125 11:05:10.406"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>id=remove-sauce-labs-backpack</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:10.406" level="INFO">Clicking button 'id=remove-sauce-labs-backpack'.</msg>
+<status status="PASS" starttime="20240125 11:05:10.406" endtime="20240125 11:05:10.436"/>
+</kw>
+<kw name="Element Should Not Be Visible" library="SeleniumLibrary">
+<arg>xpath=//div/a[@class="shopping_cart_link"]/span</arg>
+<doc>Verifies that the element identified by ``locator`` is NOT visible.</doc>
+<msg timestamp="20240125 11:05:10.443" level="INFO">Element 'xpath=//div/a[@class="shopping_cart_link"]/span' did not exist.</msg>
+<status status="PASS" starttime="20240125 11:05:10.436" endtime="20240125 11:05:10.443"/>
+</kw>
+<status status="PASS" starttime="20240125 11:05:08.668" endtime="20240125 11:05:10.443"/>
+</test>
+<test id="s1-t5" name="SWAG-005 User able to checkout" line="54">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240125 11:05:10.445" level="INFO">Opening browser 'chrome' to base url 'https://www.saucedemo.com'.</msg>
+<status status="PASS" starttime="20240125 11:05:10.444" endtime="20240125 11:05:11.930"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=user-name</arg>
+<arg>standard_user</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:11.931" level="INFO">Typing text 'standard_user' into text field 'id=user-name'.</msg>
+<status status="PASS" starttime="20240125 11:05:11.931" endtime="20240125 11:05:12.003"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=password</arg>
+<arg>secret_sauce</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:12.003" level="INFO">Typing text 'secret_sauce' into text field 'id=password'.</msg>
+<status status="PASS" starttime="20240125 11:05:12.003" endtime="20240125 11:05:12.054"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:12.055" level="INFO">Clicking button 'id=login-button'.</msg>
+<status status="PASS" starttime="20240125 11:05:12.054" endtime="20240125 11:05:12.113"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>id=add-to-cart-sauce-labs-backpack</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:12.114" level="INFO">Clicking button 'id=add-to-cart-sauce-labs-backpack'.</msg>
+<status status="PASS" starttime="20240125 11:05:12.113" endtime="20240125 11:05:12.157"/>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath=//div/a[@class="shopping_cart_link"]/span</arg>
+<arg>1</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20240125 11:05:12.172" level="INFO">Element 'xpath=//div/a[@class="shopping_cart_link"]/span' contains text '1'.</msg>
+<status status="PASS" starttime="20240125 11:05:12.157" endtime="20240125 11:05:12.172"/>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>xpath=//div[@id="shopping_cart_container"]/a</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:12.172" level="INFO">Clicking link 'xpath=//div[@id="shopping_cart_container"]/a'.</msg>
+<status status="PASS" starttime="20240125 11:05:12.172" endtime="20240125 11:05:12.210"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>xpath=//div[@class="inventory_item_name"]</arg>
+<arg>${PRODUCT LIST}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20240125 11:05:12.211" level="INFO">Verifying element 'xpath=//div[@class="inventory_item_name"]' contains exact text 'Sauce Labs Backpack'.</msg>
+<status status="PASS" starttime="20240125 11:05:12.210" endtime="20240125 11:05:12.224"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>xpath=//div[@class="inventory_item_price"]</arg>
+<arg>${PRODUCT PRICE}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20240125 11:05:12.225" level="INFO">Verifying element 'xpath=//div[@class="inventory_item_price"]' contains exact text '$29.99'.</msg>
+<status status="PASS" starttime="20240125 11:05:12.224" endtime="20240125 11:05:12.237"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>id=checkout</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:12.237" level="INFO">Clicking button 'id=checkout'.</msg>
+<status status="PASS" starttime="20240125 11:05:12.237" endtime="20240125 11:05:12.273"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=first-name</arg>
+<arg>automate</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:12.274" level="INFO">Typing text 'automate' into text field 'id=first-name'.</msg>
+<status status="PASS" starttime="20240125 11:05:12.273" endtime="20240125 11:05:12.327"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=last-name</arg>
+<arg>test</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:12.328" level="INFO">Typing text 'test' into text field 'id=last-name'.</msg>
+<status status="PASS" starttime="20240125 11:05:12.327" endtime="20240125 11:05:12.376"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=postal-code</arg>
+<arg>12345</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:12.376" level="INFO">Typing text '12345' into text field 'id=postal-code'.</msg>
+<status status="PASS" starttime="20240125 11:05:12.376" endtime="20240125 11:05:12.424"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>id=continue</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:12.424" level="INFO">Clicking button 'id=continue'.</msg>
+<status status="PASS" starttime="20240125 11:05:12.424" endtime="20240125 11:05:12.459"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>xpath=//div[@class="inventory_item_name"]</arg>
+<arg>${PRODUCT LIST}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20240125 11:05:12.459" level="INFO">Verifying element 'xpath=//div[@class="inventory_item_name"]' contains exact text 'Sauce Labs Backpack'.</msg>
+<status status="PASS" starttime="20240125 11:05:12.459" endtime="20240125 11:05:12.469"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>xpath=//div[@class="inventory_item_price"]</arg>
+<arg>${PRODUCT PRICE}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20240125 11:05:12.470" level="INFO">Verifying element 'xpath=//div[@class="inventory_item_price"]' contains exact text '$29.99'.</msg>
+<status status="PASS" starttime="20240125 11:05:12.470" endtime="20240125 11:05:12.479"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>id=finish</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:12.480" level="INFO">Clicking button 'id=finish'.</msg>
+<status status="PASS" starttime="20240125 11:05:12.479" endtime="20240125 11:05:12.515"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>xpath=//div[@class="checkout_complete_container"]/h2[@class="complete-header"]</arg>
+<arg>${complete}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20240125 11:05:12.515" level="INFO">Verifying element 'xpath=//div[@class="checkout_complete_container"]/h2[@class="complete-header"]' contains exact text 'Thank you for your order!'.</msg>
+<status status="PASS" starttime="20240125 11:05:12.515" endtime="20240125 11:05:12.528"/>
+</kw>
+<status status="PASS" starttime="20240125 11:05:10.444" endtime="20240125 11:05:12.528"/>
+</test>
+<test id="s1-t6" name="SWAG-006 User able to logout" line="74">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240125 11:05:12.529" level="INFO">Opening browser 'chrome' to base url 'https://www.saucedemo.com'.</msg>
+<status status="PASS" starttime="20240125 11:05:12.529" endtime="20240125 11:05:14.005"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=user-name</arg>
+<arg>standard_user</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:14.006" level="INFO">Typing text 'standard_user' into text field 'id=user-name'.</msg>
+<status status="PASS" starttime="20240125 11:05:14.006" endtime="20240125 11:05:14.079"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=password</arg>
+<arg>secret_sauce</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:14.080" level="INFO">Typing text 'secret_sauce' into text field 'id=password'.</msg>
+<status status="PASS" starttime="20240125 11:05:14.080" endtime="20240125 11:05:14.130"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:14.131" level="INFO">Clicking button 'id=login-button'.</msg>
+<status status="PASS" starttime="20240125 11:05:14.130" endtime="20240125 11:05:14.190"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>id=react-burger-menu-btn</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:14.190" level="INFO">Clicking button 'id=react-burger-menu-btn'.</msg>
+<status status="PASS" starttime="20240125 11:05:14.190" endtime="20240125 11:05:14.233"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240125 11:05:15.234" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20240125 11:05:14.233" endtime="20240125 11:05:15.234"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//a[@id="logout_sidebar_link"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240125 11:05:15.234" level="INFO">Clicking element 'xpath=//a[@id="logout_sidebar_link"]'.</msg>
+<status status="PASS" starttime="20240125 11:05:15.234" endtime="20240125 11:05:15.262"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240125 11:05:16.263" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20240125 11:05:15.262" endtime="20240125 11:05:16.263"/>
+</kw>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>https://www.saucedemo.com/</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20240125 11:05:16.266" level="INFO">Current location is 'https://www.saucedemo.com/'.</msg>
+<status status="PASS" starttime="20240125 11:05:16.263" endtime="20240125 11:05:16.266"/>
+</kw>
+<status status="PASS" starttime="20240125 11:05:12.528" endtime="20240125 11:05:16.266"/>
+</test>
+<status status="PASS" starttime="20240125 11:05:03.239" endtime="20240125 11:05:16.267"/>
+</suite>
+<statistics>
+<total>
+<stat pass="6" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="6" fail="0" skip="0" id="s1" name="Swaglabs">Swaglabs</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

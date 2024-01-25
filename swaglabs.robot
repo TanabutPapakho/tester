@@ -16,31 +16,32 @@ ${complete}    Thank you for your order!
 Say Hello
     Log To Console    Ngern
 
-SWAG-001
+      
+
+*** Test cases ***
+SWAG-001 User be able to login with valid username and password
     Open Browser   ${URL}     browser=${BROWSER}
     Input Text    id=user-name   standard_user
     Input Text    id=password    secret_sauce
     Click Button    id=login-button
     Location Should Be    ${PRODUCT_PAGE}
 
-SWAG-002
+SWAG-002 User not be able to login with valid username and password
     Open Browser    ${URL}    browser=${BROWSER}
     Input Text    id=user-name   standard_user
     Input Text    id=password    secret_sauce123
     Click Button    id=login-button
     Element Text Should Be    xpath=//div/h3[@data-test="error"]    ${ERROR MESSAGE}
-    # Sleep    2
-    
-SWAG-003
+ 
+SWAG-003 User able to add product to cart
     Open Browser    ${URL}  browser=${BROWSER}
     Input Text    id=user-name   standard_user
     Input Text    id=password    secret_sauce
     Click Button    id=login-button
     Click Button    id=add-to-cart-sauce-labs-backpack
     Element Should Contain    xpath=//div/a[@class="shopping_cart_link"]/span    1
-    # Sleep    1
 
-SWAG-004
+SWAG-004 User able to remove product to cart
     Open Browser    ${URL}  browser=${BROWSER}
     Input Text    id=user-name   standard_user
     Input Text    id=password    secret_sauce
@@ -50,7 +51,7 @@ SWAG-004
     Element Should Not Be Visible    xpath=//div/a[@class="shopping_cart_link"]/span 
 
 
-SWAG-005
+SWAG-005 User able to checkout
     Open Browser    ${URL}  browser=${BROWSER}
     Input Text    id=user-name   standard_user
     Input Text    id=password    secret_sauce
@@ -70,7 +71,7 @@ SWAG-005
     Click Button    id=finish
     Element Text Should Be    xpath=//div[@class="checkout_complete_container"]/h2[@class="complete-header"]   ${complete}
 
-SWAG-006
+SWAG-006 User able to logout
     Open Browser   ${URL}     browser=${BROWSER}
     Input Text    id=user-name   standard_user
     Input Text    id=password    secret_sauce
@@ -81,14 +82,3 @@ SWAG-006
     Click Element    xpath=//a[@id="logout_sidebar_link"]
     Sleep    1
     Location Should Be    https://www.saucedemo.com/
-
-*** Test cases ***
-Test print text
-    SWAG-001
-    SWAG-002
-    SWAG-003
-    SWAG-004
-    SWAG-005
-    SWAG-006
-
- 
