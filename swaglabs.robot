@@ -6,6 +6,7 @@ Test Teardown    Close Browser
 *** Variables ***
 ${message}    My Message
 ${URL}    https://www.saucedemo.com
+${URLLOGOUT}    https://www.saucedemo.com/
 ${PRODUCT_PAGE}    ${URL}/inventory.html
 ${BROWSER}    chrome
 ${ERROR MESSAGE}    Epic sadface: Username and password do not match any user in this service
@@ -15,59 +16,79 @@ ${complete}    Thank you for your order!
 
 *** Keywords ***
 LoginSwaglabs
-    Input Text    id=user-name   standard_user
-    Input Text    id=password    secret_sauce
-    Click Button    id=login-button
-LoginFail
-    Input Text    id=user-name   standard_user
-    Input Text    id=password    secret_sauce123
+    [Arguments]    ${username}    ${password}
+    Input Text    id=user-name   ${username}
+    Input Text    id=password    ${password}
     Click Button    id=login-button
 
+Check location
+    [Arguments]    ${URLCheck}
+    Location Should Be    ${URLCheck}
 
+Check element text
+    [Arguments]    ${XPATH}    ${TEXT}
+    Element Text Should Be     ${XPATH}    ${TEXT}
 
+Click add to cart
+    [Arguments]    ${XPATH}
+    Click Button    ${XPATH}
 
-    
+Verify item number after add cart
+    [Arguments]    ${XPATH}    ${Number}
+    Element Should Contain    ${XPATH}    ${Number}
+
+Click Remove to cart
+    [Arguments]    ${XPATH}
+    Click Button    ${XPATH}
+
+Check not show number of items in cart
+    [Arguments]    ${XPATH}
+    Element Should Not Be Visible     ${XPATH}
+
+Check Out
+    [Arguments]    ${firstname}    ${lastname}    ${postalcode}
+    Click Button    id=checkout
+    Input Text    id=first-name   ${firstname}
+    Input Text    id=last-name    ${lastname}
+    Input Text    id=postal-code    ${postalcode}
+    Click Button    id=continue
+
 *** Test cases ***
 SWAG-001 User be able to login with valid username and password
-    LoginSwaglabs
-    Location Should Be    ${PRODUCT_PAGE}
+    LoginSwaglabs    standard_user    secret_sauce
+    Check location    ${PRODUCT_PAGE}
 
 SWAG-002 User not be able to login with valid username and password
-    LoginFail
-    Element Text Should Be    xpath=//div/h3[@data-test="error"]    ${ERROR MESSAGE}
- 
+    LoginSwaglabs    standard_user    secret_sauce123
+    Check element text    xpath=//div/h3[@data-test="error"]    ${ERROR MESSAGE}
+
 SWAG-003 User able to add product to cart
-    LoginSwaglabs
-    Click Button    id=add-to-cart-sauce-labs-backpack
-    Element Should Contain    xpath=//div/a[@class="shopping_cart_link"]/span    1
+    LoginSwaglabs    standard_user    secret_sauce
+    Click add to cart    id=add-to-cart-sauce-labs-backpack
+    Verify item number after add cart    xpath=//div/a[@class="shopping_cart_link"]/span    1
 
 SWAG-004 User able to remove product to cart
-    LoginSwaglabs
-    Click Button    id=add-to-cart-sauce-labs-backpack
-    Click Button    id=remove-sauce-labs-backpack
-    Element Should Not Be Visible    xpath=//div/a[@class="shopping_cart_link"]/span 
-
+    LoginSwaglabs    standard_user    secret_sauce
+    Click add to cart     id=add-to-cart-sauce-labs-backpack
+    Click Remove to cart    id=remove-sauce-labs-backpack
+    Check not show number of items in cart    xpath=//div/a[@class="shopping_cart_link"]/span 
 
 SWAG-005 User able to checkout
-    LoginSwaglabs
-    Click Button    id=add-to-cart-sauce-labs-backpack
-    Element Should Contain    xpath=//div/a[@class="shopping_cart_link"]/span    1
+    LoginSwaglabs    standard_user    secret_sauce
+    Click add to cart    id=add-to-cart-sauce-labs-backpack
+    Verify item number after add cart    xpath=//div/a[@class="shopping_cart_link"]/span    1
     Click Link    xpath=//div[@id="shopping_cart_container"]/a
-    Element Text Should Be    xpath=//div[@class="inventory_item_name"]   ${PRODUCT LIST}
-    Element Text Should Be    xpath=//div[@class="inventory_item_price"]   ${PRODUCT PRICE}
-    Click Button    id=checkout
-    Input Text    id=first-name   automate
-    Input Text    id=last-name    test
-    Input Text    id=postal-code    12345
-    Click Button    id=continue
-    Element Text Should Be    xpath=//div[@class="inventory_item_name"]   ${PRODUCT LIST}
-    Element Text Should Be    xpath=//div[@class="inventory_item_price"]   ${PRODUCT PRICE}
+    Check element text    xpath=//div[@class="inventory_item_name"]   ${PRODUCT LIST}
+    Check element text    xpath=//div[@class="inventory_item_price"]   ${PRODUCT PRICE}
+    Check Out    automated    tester    40000
+    Check element text    xpath=//div[@class="inventory_item_name"]   ${PRODUCT LIST}
+    Check element text    xpath=//div[@class="inventory_item_price"]   ${PRODUCT PRICE}
     Click Button    id=finish
-    Element Text Should Be    xpath=//div[@class="checkout_complete_container"]/h2[@class="complete-header"]   ${complete}
+    Check element text    xpath=//div[@class="checkout_complete_container"]/h2[@class="complete-header"]   ${complete}
 
 SWAG-006 User able to logout
-    LoginSwaglabs
+    LoginSwaglabs    standard_user    secret_sauce
     Click Button    id=react-burger-menu-btn
     Wait Until Element Is Visible    xpath=//a[@id="logout_sidebar_link"]
     Click Element    xpath=//a[@id="logout_sidebar_link"]
-    Location Should Be    https://www.saucedemo.com/
+    Check location    ${URLLOGOUT}
